@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-if __main__ == "__main__"
+if __main__ == "__main__":
 import sys
 
 arguments = sys.argv
