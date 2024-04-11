@@ -1,2 +1,10 @@
-python3 -c 'print(__import__("0-add_integer").__doc__)'
-python3 -c 'print(__import__("0-add_integer").add_integer.__doc__)'
+import unittest
+from 0-add_integer import add_integer
+
+class TestMyModule(unittest.TestCase):
+
+    def test_add(self):
+        """Test with numbers"""
+        self.assertEqual(add_integer(1, 0), 1)
+        self.assertEqual(add_integer(-1, 1), 0)
+        self.assertEqual(add_integer(3, 3.5), 6.5)
