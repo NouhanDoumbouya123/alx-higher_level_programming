@@ -23,9 +23,8 @@ def append_write(filename="", text=""):
 
         # Ending position
         end = file.tell()
-        
+
         # Number of characters written is:
         num = end - current
 
         return num
-
