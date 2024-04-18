@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This module contains two functions"""
 
 import sys
 import json
