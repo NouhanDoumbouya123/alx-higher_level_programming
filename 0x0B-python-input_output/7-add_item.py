@@ -4,6 +4,7 @@
 import sys
 import json
 
+
 def save_to_json_file(my_obj, filename):
     """This function will write the object(my_obj)
     to the file(filename)
@@ -16,6 +17,7 @@ def save_to_json_file(my_obj, filename):
     with open(filename, "w") as file:
         json.dump(my_obj, file)
 
+
 def load_from_json_file(filename):
     """This function creates an object from a JSON file
     Args:
@@ -25,6 +27,7 @@ def load_from_json_file(filename):
     with open(filename) as file:
         data = json.load(file)
         return data
+
 
 # Get arguments from the command line excluding the script name
 arguments = sys.argv[1:]
