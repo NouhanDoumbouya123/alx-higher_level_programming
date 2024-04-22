@@ -12,52 +12,59 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """The constructor"""
 
-        super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
         self.__y = y
+        super().__init__(id)
 
-    def get_width(self):
+    @property
+    def width(self):
         """To get the width"""
 
         return self.__width
 
-    def get_height(self):
+    @property
+    def height(self):
         """To get the height"""
 
         return self.__height
 
-    def get_x(self):
+    @property
+    def x(self):
         """To get x"""
 
         return self.__x
 
-    def get_y(self):
+    @property
+    def y(self):
         """To get y"""
 
         return self.__y
 
-    def set_width(self, width):
+    @width.setter
+    def width(self, width):
         """To set the width"""
 
-        if type(widht) != int:
+        if not isinstance(width, int):
             raise TypeError("width must be an integer")
         if width <= 0:
             raise ValueError("width must be > 0")
         self.__width = width
 
-    def set_height(self, height):
+    @height.setter
+    def height(self, height):
         """To set the height"""
 
-        if type(height) != int:
+        if not isinstance(height, int):
             raise TypeError("height must be an integer")
         if height <= 0:
             raise ValueError("height must be > 0")
 
         self.__height = height
 
-    def set_x(self, x):
+    @x.setter
+    def x(self, x):
         """To set x """
 
         if x < 0:
@@ -65,7 +72,8 @@ class Rectangle(Base):
 
         self.__x = x
 
-    def set_y(self, y):
+    @y.setter
+    def y(self, y):
         """To set y"""
 
         if y < 0:
