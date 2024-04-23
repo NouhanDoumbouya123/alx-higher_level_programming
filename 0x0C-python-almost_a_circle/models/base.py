@@ -3,6 +3,7 @@
 will be the base of all other classes
 in order to manage id attribute"""
 import json
+import csv
 
 
 class Base:

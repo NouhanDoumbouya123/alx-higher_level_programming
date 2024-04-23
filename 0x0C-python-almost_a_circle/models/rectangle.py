@@ -46,17 +46,18 @@ class Rectangle(Base):
     def width(self, width):
         """To set the width"""
 
-        if not isinstance(width, int):
+        if type(width) is not int:
             raise TypeError("width must be an integer")
         if width <= 0:
             raise ValueError("width must be > 0")
+
         self.__width = width
 
     @height.setter
     def height(self, height):
-        """To set the height"""
+        """To set the height""" 
 
-        if not isinstance(height, int):
+        if type(height) is not int:
             raise TypeError("height must be an integer")
         if height <= 0:
             raise ValueError("height must be > 0")
@@ -103,7 +104,7 @@ class Rectangle(Base):
         returns [Rectangle] (<id>) <x>/<y> - <width>/<height>
         """
         return f"[Rectangle] ({self.id})" \
-               f" {self.__x}/{self.__y} - "\
+               f" {self.__x}/{self.__y} -"\
                f" {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):
