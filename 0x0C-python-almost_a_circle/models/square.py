@@ -1,84 +1,73 @@
 #!/usr/bin/python3
-"""This contains a class Square that inherits
-from Rectangle class"""
-
+""" Module that contains class Square,
+inheritance of class Rectangle
+"""
 from models.rectangle import Rectangle
-"""Importing the Rectangle class
-in order to inherit from it"""
 
 
 class Square(Rectangle):
-    """This class is inheriting from Rectangle
-
-    Class Constructor:
-    def __init__(self, size, x=0, y=0, id=None)
-
-    Args:
-    self: the self
-    size: This will replace width and height as
-    in they are the same in a square
-    x: the new line
-    y: the space
-    id:the id
-    """
+    """ Class Rectangle """
 
     def __init__(self, size, x=0, y=0, id=None):
-        """The constructor method that inherit
-        everything from the Rectangle class
-        excet tihat width and height will have
-        the same thing because it is Square"""
-
-        if type(size) is not int:
-            raise TypeError("width must be an integer")
+        """ Initializes instances """
         super().__init__(size, size, x, y, id)
-        self.size = size
 
     def __str__(self):
-        """Return the string representation"""
-        return f"[Square] ({self.id})"\
-               f" {self._Rectangle__x}/{self._Rectangle__y} - {self.size}"
+        """ str special method """
+        str_square = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_wh = "{}/{}".format(self.width, self.height)
 
-    def set_size(self, size):
-        """To set the values of width and height"""
-        if type(size) is not int:
-            raise TypeError("width must be an integer")
-        if size <= 0:
-            raise ValueError("size must be > 0")
-        self.width = size
-        self.height = size
+        return str_square + str_id + str_xy + str_wh
 
-    def get_size(self):
-        """This is size getter method"""
+    @property
+    def size(self):
+        """ Getter size """
+        return self.width
 
-        return self.size
+    @size.setter
+    def size(self, value):
+        """ Setter size """
+        self.width = value
+        self.height = value
+
+    def __str__(self):
+        """ str special method """
+        str_rectangle = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_size = "{}".format(self.size)
+
+        return str_rectangle + str_id + str_xy + str_size
 
     def update(self, *args, **kwargs):
-        """Updating the values of the attributes"""
-        if args:
-            if len(args) >= 1:
-                self.id = args[0]
-            if len(args) >= 2:
-                self.size = args[1]
-            if len(args) >= 3:
-                self._Rectangle__x = args[2]
-            if len(args) >= 4:
-                self._Rectangle__y = args[3]
+        """ update method """
+        if args is not None and len(args) !=  0:
+            list_atr = ['id', 'size', 'x', 'y']
+            for i in range(len(args)):
+                if list_atr[i] == 'size':
+                    setattr(self, 'width', args[i])
+                    setattr(self, 'height', args[i])
+                else:
+                    setattr(self, list_atr[i], args[i])
         else:
             for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                if key == "size":
-                    self.size = value
-                if key == "x":
-                    self._Rectangle__x = value
-                if key == "y":
-                    self._Rectangle__y = value
+                if key == 'size':
+                    setattr(self, 'width', value)
+                    setattr(self, 'height', value)
+                else:
+                    setattr(self, key, value)
 
     def to_dictionary(self):
-        "This will return the dictionary"""
-        return {
-                "id": self.id,
-                "x": self._Rectangle__x,
-                "size": self.size,
-                "y": self._Rectangle__y
-                }
+        """ Returns a dictionary with attributes """
+        list_atr = ['id', 'size', 'x', 'y']
+        dict_res = {}
+
+        for key in list_atr:
+            if key == 'size':
+                dict_res[key] = getattr(self, 'width')
+            else:
+                dict_res[key] = getattr(self, key)
+
+        return dict_res
