@@ -25,10 +25,10 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """The constructor method that inherit
         everything from the Rectangle class
-        excet that width and height will have
+        excet tihat width and height will have
         the same thing because it is Square"""
 
-        super().__init__(size, size, x, y, id)
+        super().__init__(size, x, y, id)
         self.size = size
 
     def __str__(self):
