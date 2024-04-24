@@ -28,6 +28,8 @@ class Square(Rectangle):
         excet tihat width and height will have
         the same thing because it is Square"""
 
+        if type(size) is not int:
+            raise TypeError("width must be an integer")
         super().__init__(size, size, x, y, id)
         self.size = size
 
@@ -39,11 +41,16 @@ class Square(Rectangle):
     def set_size(self, size):
         """To set the values of width and height"""
         if type(size) is not int:
-            raise TypeError("size must be an integer")
-        if size <= 0:
+            raise TypeError("width must be an integer")
+        if size  <=  0:
             raise ValueError("size must be > 0")
         self.width = size
         self.height = size
+
+    def get_size(self):
+        """This is size getter method"""
+
+        return self.size
 
     def update(self, *args, **kwargs):
         """Updating the values of the attributes"""
