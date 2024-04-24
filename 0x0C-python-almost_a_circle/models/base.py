@@ -34,7 +34,7 @@ class Base:
         """A static method that returns the JSON
         representation of a list of list_dictionaries"""
 
-        if not list_dictionaries:
+        if list_dictionaries is None or list_dictionaries == "[]":
             return "[]"
         else:
             return json.dumps(list_dictionaries)
