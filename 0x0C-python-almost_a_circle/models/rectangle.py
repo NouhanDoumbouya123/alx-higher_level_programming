@@ -86,7 +86,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, x):
         """To set x """
-        
+
         if type(x) is not int:
             raise TypeError("x must be an integer")
         if x < 0:
