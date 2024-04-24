@@ -28,7 +28,7 @@ class Square(Rectangle):
         excet tihat width and height will have
         the same thing because it is Square"""
 
-        super().__init__(size, x, y, id)
+        super().__init__(size, size, x, y, id)
         self.size = size
 
     def __str__(self):
@@ -36,10 +36,10 @@ class Square(Rectangle):
         return f"[Square] ({self.id})"\
                f" {self._Rectangle__x}/{self._Rectangle__y} - {self.size}"
 
-    def set_size(self, value):
+    def set_size(self, size):
         """To set the values of width and height"""
-        self.width = value
-        self.height = value
+        self.width = size
+        self.height = size
 
     def update(self, *args, **kwargs):
         """Updating the values of the attributes"""
