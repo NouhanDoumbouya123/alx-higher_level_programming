@@ -1,4 +1,2 @@
--- Print the full description of a table
-SELECT *
-FROM information_schema.columns
-WHERE table_schema='hbtn_0c_0' AND table_name='first_table';
+-- Prints full description of the first_table
+SHOW CREATE table first_table;
