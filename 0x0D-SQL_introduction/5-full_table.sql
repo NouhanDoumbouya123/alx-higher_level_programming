@@ -1,16 +1,9 @@
--- Get the table creation query from the information_schema
-SELECT 
-    CONCAT('Table   ', TABLE_NAME) AS 'Table',
-    CONCAT('CREATE TABLE ', TABLE_NAME, ' (') AS 'Create Table',
-    GROUP_CONCAT(
-        CONCAT(COLUMN_NAME, ' ', COLUMN_TYPE,
-               IF(IS_NULLABLE = 'NO', ' NOT NULL', ''),
-               IF(COLUMN_DEFAULT IS NOT NULL, CONCAT(' DEFAULT ', QUOTE(COLUMN_DEFAULT)), ''),
-               IF(EXTRA != '', CONCAT(' ', EXTRA), '')), ',\n  ')
-    AS 'Table Description'
-FROM
-    information_schema.columns
-WHERE
-    table_schema = 'hbtn_0c_0' AND table_name = 'first_table'
-GROUP BY
-    TABLE_NAME;
+-- Script to print the full description of the table first_table from the database hbtn_0c_0
+
+-- Redirect the output of the SHOW CREATE TABLE statement to a temporary table
+CREATE TEMPORARY TABLE IF NOT EXISTS tmp_description AS
+    SHOW CREATE TABLE hbtn_0c_0.first_table;
+
+-- Retrieve the full description of the table from the temporary table
+SELECT CONCAT_WS('\n', Create_Table, Create_View) AS 'Table Description'
+FROM tmp_description;
