@@ -1,9 +1,10 @@
--- Calculate the average temperature by city for July and August, and display the top 3 cities ordered by temperature (descending)
-USE hbtn_0c_0;
-
+-- displays average temp by city for july and august in descending order
+CREATE TABLE IF NOT EXISTS temp_july_aug
+       SELECT *
+       FROM temperatures
+       WHERE month = 7 OR month = 8;
 SELECT city, AVG(value) AS avg_temp
-FROM hbtn_0c_0.temperatures
-WHERE month IN ('July', 'August')
+FROM temp_july_aug
 GROUP BY city
 ORDER BY avg_temp DESC
-LIMIT 3;
+limit 3;
